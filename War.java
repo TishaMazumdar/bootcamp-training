@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class War{
     // Two countries are at war
     // Size of arrays are same
