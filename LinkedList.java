@@ -96,6 +96,17 @@ public class LinkedList{
         }
     }
 
+    public void addList(LinkedList first, LinkedList second){
+        Node f = first.head;
+        Node s = second.head;
+
+        while(f!=null){
+            this.insertLast(f.value + s.value);
+            f = f.next;
+            s = s.next;
+        }
+    }
+
     class Node{
         int value;
         Node next;
@@ -127,6 +138,7 @@ public class LinkedList{
         first.insertLast(1);
         first.insertLast(3);
         first.insertLast(5);
+        first.insertLast(7);
         second.insertLast(1);
         second.insertLast(2);
         second.insertLast(9);
@@ -134,5 +146,9 @@ public class LinkedList{
         LinkedList mergedList = new LinkedList();
         mergedList.merge(first, second);
         mergedList.display();
+
+        LinkedList addedList = new LinkedList();
+        addedList.addList(first, second);
+        addedList.display();
     }
 }
