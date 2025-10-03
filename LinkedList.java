@@ -71,6 +71,31 @@ public class LinkedList{
         tail.next = null;
     }
 
+    public void merge(LinkedList first, LinkedList second){
+        Node f = first.head;
+        Node s = second.head;
+
+        while(f!=null && s!=null){
+            if(f.value < s.value){
+                this.insertLast(f.value);
+                f = f.next;
+            } else {
+                this.insertLast(s.value);
+                s = s.next;
+            }
+        }
+
+        while(f!=null){
+            this.insertLast(f.value);
+            f = f.next;
+        }
+
+        while(s!=null){
+            this.insertLast(s.value);
+            s = s.next;
+        }
+    }
+
     class Node{
         int value;
         Node next;
@@ -96,5 +121,18 @@ public class LinkedList{
         list.removeDuplicates();
         list.display();
         System.out.println("Length of linked list: " + list.size);
+
+        LinkedList first = new LinkedList();
+        LinkedList second = new LinkedList();
+        first.insertLast(1);
+        first.insertLast(3);
+        first.insertLast(5);
+        second.insertLast(1);
+        second.insertLast(2);
+        second.insertLast(9);
+        second.insertLast(14);
+        LinkedList mergedList = new LinkedList();
+        mergedList.merge(first, second);
+        mergedList.display();
     }
 }
