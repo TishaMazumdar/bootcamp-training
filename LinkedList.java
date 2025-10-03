@@ -54,6 +54,23 @@ public class LinkedList{
         System.out.println("END");
     }
 
+    public void removeDuplicates(){
+        Node node = head;
+        if(head==null){
+            return;
+        }
+        while(node.next!=null){
+            if(node.value == node.next.value){
+                node.next = node.next.next;
+                size--;
+            } else {
+                node = node.next;
+            }
+        }
+        tail = node;
+        tail.next = null;
+    }
+
     class Node{
         int value;
         Node next;
@@ -69,11 +86,14 @@ public class LinkedList{
     }
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
+        list.insertLast(1);
+        list.insertLast(1);
+        list.insertLast(2);
         list.insertLast(3);
-        list.insertLast(5);
-        list.insertLast(8);
-        list.insertLast(19);
-        list.insertPos(20, 3);
+        list.insertLast(3);
+        list.insertLast(3);
+        list.insertLast(3);
+        list.removeDuplicates();
         list.display();
         System.out.println("Length of linked list: " + list.size);
     }
